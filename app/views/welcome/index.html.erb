@@ -1,3 +1,30 @@
-<h1>Welcome to Bloccit</h1>
-<p>This is the homepage for Bloccit.</p>
+<br/>
+<div class='jumbotron'>
+  <h1>Bloccit by Brandon</h1>
+  <p>Bloccit is a resource for sharing links with your friends!</p>
+  <p>
+    <%= link_to "Sign In", new_user_session_path,
+                                class: 'btn btn-primary' %> or
+    <%= link_to "Sign Up", new_user_registration_path,
+                                class: 'btn btn-primary' %> today!
+  </p>
+</div>
 
+<div class='row'>
+  <div class='col-md-4'>
+    <h2>Solves world hunger</h2>
+    <p>Bloccit will deliver food and water to those in need,
+          all over the world.</p>
+  </div>
+
+  <div class='col-md-4'>
+    <h2>Makes you awesome</h2>
+    <p>Your friends will be amazed at all of the things you share!</p>
+  </div>
+
+  <div class='col-md-4'>
+    <h2>Will pay your rent</h2>
+    <p>Your chance to receive a month of free rent increases exponentially
+          with each post!</p>
+  </div>
+</div>
