@@ -5,6 +5,12 @@
       <h4 class="media-heading">
         <%= link_to post.title, post %>
       </h4>
+
+      <small>
+        <%= time_ago_in_words(post.created_at) %> ago by
+          <%= post.user.name %> &emsp;
+          <%= pluralize(post.comments.count, 'comment') %>
+      </small>
     </div>
   </div>
 <% end %>
