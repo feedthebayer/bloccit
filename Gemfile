@@ -10,6 +10,7 @@ gem 'bootstrap-sass', '~>3.1.1'
 gem 'faker'
 gem 'devise'
 gem 'figaro', '1.0'
+gem 'pundit'
 
 
 group :production do
