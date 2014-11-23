@@ -40,6 +40,15 @@ user.update_attributes!(
   password: "12345678"
 )
 
+admin = User.second
+admin.skip_reconfirmation!
+admin.update_attributes!(
+  name:     "Administrator",
+  email:    "admin@example.com",
+  password: "12345678",
+  role:     "admin"
+)
+
 puts "Seed finished"
 puts "#{User.count} users created"
 puts "#{Post.count} posts created"
