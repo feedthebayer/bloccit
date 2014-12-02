@@ -1,5 +1,6 @@
 <%= simple_form_for [topic, post] do |f| %>
   <%= f.input :title, placeholder: "Enter post title" %>
   <%= f.input :body, placeholder: "Enter post body", input_html: { rows: 8 }  %>
+  <%= f.input :image, as: :file %>
   <%= f.button :submit, class: 'btn-success' %>
 <% end %>
