@@ -1,3 +1,4 @@
+<%= image_tag(post.image.thumb.url) if post.image? %>
 <h1><%= markdown @post.title %></h1>
 
 <div class='col-md-8'>
@@ -7,9 +8,9 @@
   <% end %>
 
   <small>
+    submitted <%= time_ago_in_words(@post.created_at) %> ago by
     <%= image_tag(current_user.avatar.tiny.url) if current_user.avatar? %>
-    submitted <%= time_ago_in_words(post.created_at) %> ago
-        by <%= post.user.name %>
+        <%= @post.user.name %>
   </small>
 
   <p><%= markdown @post.body %></p>
