@@ -1,5 +1,13 @@
 source 'https://rubygems.org'
 
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
+
+group :development do
+  gem 'sqlite3'
+end
 
 gem 'rails', '4.1.6'
 gem 'sass-rails', '~> 4.0.3'
@@ -16,14 +24,6 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
 
-group :production do
-  gem 'pg'
-  gem 'rails_12factor'
-end
-
-group :development do
-  gem 'sqlite3'
-end
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'

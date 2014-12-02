@@ -2,13 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def update
-    info = user_params
-
-    # info[:avatar] = "test string"
-
-    logger.debug "Params: #{info[:avatar].class}"
-
-    if current_user.update_attributes(info)
+    if current_user.update_attributes(user_params)
       flash[:notice] = "User inforation updated"
     else
       flash[:error] = "Invalid user information"
