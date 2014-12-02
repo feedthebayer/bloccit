@@ -1,8 +1,18 @@
+<%= image_tag(@post.image.thumb.url) if @post.image? %>
 <h1><%= @post.markdown_title %></h1>
 
-<% if policy(@post).edit? %>
-  <%= link_to "Edit", edit_topic_post_path(@topic, @post), class: 'btn btn-success' %>
-<% end %>
+<div class='col-md-8'>
+  <% if policy(@post).edit? %>
+    <%= link_to "Edit", edit_topic_post_path(@topic, @post),
+              class: 'btn btn-success' %>
+  <% end %>
 
-<p><%= @post.markdown_body %></p>
+  <small>
+    submitted <%= time_ago_in_words(@post.created_at) %> ago by
+    <%= image_tag(current_user.avatar.tiny.url) if current_user.avatar? %>
+        <%= @post.user.name %>
+  </small>
+
+  <p><%= @post.markdown_body %></p>
+</div>
 
