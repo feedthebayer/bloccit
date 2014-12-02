@@ -20,7 +20,7 @@
           <small>
             <%= pluralize(post.comments.count, 'comment') %> &nbsp;
             submitted <%= time_ago_in_words(post.created_at) %> ago by
-            <%= image_tag(current_user.avatar.tiny.url) if current_user.avatar? %>
+            <%= image_tag(post.user.avatar.tiny.url) if post.user.avatar? %>
             <%= post.user.name %>
           </small>
         </div>
