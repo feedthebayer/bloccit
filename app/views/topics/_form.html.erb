@@ -1,0 +1,7 @@
+<%= simple_form_for topic do |f| %>
+  <%= f.input :name, placeholder: "Enter topic name" %>
+  <%= f.input :description, placeholder: "Enter topic description",
+              input_html: { rows: 8 } %>
+  <%= f.input :public %>
+  <%= f.button :submit, class: 'btn-success' %>
+<% end %>
