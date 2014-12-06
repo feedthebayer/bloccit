@@ -1,0 +1,4 @@
+<%= image_tag(comment.user.avatar.tiny.url) %>
+<h4><%= comment.user.name %></h4>
+<small><%= time_ago_in_words comment.created_at %> ago</small>
+<p><%= comment.body %></p>
