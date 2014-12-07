@@ -24,6 +24,9 @@
   <div class="col-md-5">
     <%= render @comments %>
     <br/>
-    <%= render partial: 'comments/form', locals: { topic: @topic, post: @post } %>
+    <% if user_signed_in? %>
+      <%= render partial: 'comments/form',
+        locals: { topic: @topic, post: @post } %>
+    <% end %>
   </div>
 </div>
