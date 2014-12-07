@@ -35,7 +35,14 @@
     <p>
       <% if policy(Topic.new).edit? %>
         <%= link_to "Edit Topic", edit_topic_path,
-          class: 'btn btn-info btn-lg' %>
+          class: 'btn btn-info' %>
+      <% end %>
+    </p>
+    <p>
+      <% if policy(@topic).destroy? %>
+        <%= link_to "Delete Topic", @topic, method: :delete,
+          class: "btn btn-danger",
+          data: { confirm: "This topic will be permanently deleted." } %>
       <% end %>
     </p>
   </div>

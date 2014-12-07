@@ -3,9 +3,4 @@
   <%= f.input :body, placeholder: "Enter post body", input_html: { rows: 8 }  %>
   <%= f.input :image, as: :file %>
   <%= f.submit class: 'btn btn-success' %>
-  <% if policy(post).destroy? %>
-    <%= link_to "Delete Post", [topic, post], method: :delete,
-      class: "btn btn-danger",
-      data: { confirm: "This post will be permanently deleted." } %>
-  <% end %>
 <% end %>
