@@ -1,16 +1,19 @@
 <h1><%= @topic.name %></h1>
 
-<% if policy(Topic.new).edit? %>
-  <%= link_to "Edit Topic", edit_topic_path, class: 'btn btn-success' %>
-<% end %>
-
-<% if policy(Post.new).create? %>
-  <%= link_to "New Post", new_topic_post_path(@topic), class: 'btn btn-success' %>
-<% end %>
 
 <div class='row'>
   <div class='col-md-8'>
     <p class='lead'><%= @topic.description %></p>
+
+  <% if policy(Post.new).create? %>
+    <%= link_to "New Post", new_topic_post_path(@topic),
+      class: 'btn btn-success ' %>
+  <% end %>
+
+  <% if policy(Topic.new).edit? %>
+    <%= link_to "Edit Topic", edit_topic_path,
+      class: 'btn btn-info ' %>
+  <% end %>
 
     <% @posts.each do |post| %>
       <div class='media'>

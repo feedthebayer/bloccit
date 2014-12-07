@@ -4,4 +4,10 @@
               input_html: { rows: 8 } %>
   <%= f.input :public %>
   <%= f.submit class: 'btn btn-success' %>
+  <% if policy(topic).destroy? %>
+    <%= link_to "Delete Topic", topic, method: :delete,
+      class: "btn btn-danger",
+      data: { confirm: "This topic will be permanently deleted." } %>
+  <% end %>
 <% end %>
+
