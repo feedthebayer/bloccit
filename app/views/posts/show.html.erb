@@ -5,18 +5,19 @@
 
 <div class="row">
   <div class='col-md-8'>
-    <% if policy(@post).edit? %>
-      <%= link_to "Edit", edit_topic_post_path(@topic, @post),
-        class: 'btn btn-success' %>
-    <% end %>
-
+    <p><%= @post.markdown_body %></p>
     <small>
       submitted <%= time_ago_in_words(@post.created_at) %> ago by
       <%= image_tag(@post.user.avatar.tiny.url) if @post.user.avatar? %>
       <%= @post.user.name %>
     </small>
+  </div>
 
-    <p><%= @post.markdown_body %></p>
+  <div class="col-md-4">
+    <% if policy(@post).edit? %>
+      <%= link_to "Edit Post", edit_topic_post_path(@topic, @post),
+        class: 'btn btn-info' %>
+    <% end %>
   </div>
 </div>
 

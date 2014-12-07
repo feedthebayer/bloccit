@@ -3,14 +3,14 @@
   <h1>Bloccit by Brandon</h1>
   <p>Sharing links with your friends has never been more amazing!</p>
   <p>
-    <% if !current_user %>
-      <%= link_to "Sign In", new_user_session_path,
-        class: 'btn btn-primary' %> or
-      <%= link_to "Sign Up", new_user_registration_path,
-        class: 'btn btn-primary' %> today!
-    <% elsif %>
+    <% if user_signed_in? %>
       <%= link_to "View All Topics", topics_path,
-        class: 'btn btn-primary' %>
+        class: 'btn btn-primary btn-lg' %>
+    <% else %>
+      <%= link_to "Sign In", new_user_session_path,
+        class: 'btn btn-primary btn-lg' %> or
+      <%= link_to "Sign Up", new_user_registration_path,
+        class: 'btn btn-primary btn-lg' %> today!
     <% end %>
   </p>
 </div>
