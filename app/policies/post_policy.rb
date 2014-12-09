@@ -4,6 +4,6 @@ class PostPolicy < ApplicationPolicy
   end
 
   def destroy?
-    update? || user.moderator?
+    user.present? && can_moderate?
   end
 end
