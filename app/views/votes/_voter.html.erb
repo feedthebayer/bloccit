@@ -1,0 +1,7 @@
+<div class="pull-left vote-arrows">
+  <div><%= link_to " ", topic_post_up_vote_path(post.topic, post),
+    class: 'glyphicon glyphicon-chevron-up', method: :post %></div>
+  <div><strong><%= post.points %></strong></div>
+  <div><%= link_to " ", topic_post_down_vote_path(post.topic, post),
+    class: 'glyphicon glyphicon-chevron-down', method: :post %></div>
+</div>
