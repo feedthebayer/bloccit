@@ -1,12 +1,14 @@
-<%= image_tag comment.user.avatar.tiny.url, class: "pull-left" %>
-<h4><%= comment.user.name %></h4>
-<small>
-  <p><%= comment.body %></p>
-  <p>
-    <%= time_ago_in_words comment.created_at %> ago
-    <% if policy(comment).destroy? %>
-      | <%= link_to "Delete", [@topic, @post, comment], method: :delete,
-        data: { confirm: "This comment will be permanently deleted." } %>
-    <% end %>
-  </p>
-</small>
+<div style="margin-bottom: 30px">
+  <%= image_tag comment.user.avatar.tiny.url, class: "pull-left" %>
+  <h4><%= comment.user.name %></h4>
+  <small>
+    <p><%= comment.body %></p>
+    <p>
+      <%= time_ago_in_words comment.created_at %> ago
+      <% if policy(comment).destroy? %>
+        | <%= link_to "Delete", [@topic, @post, comment], method: :delete,
+          data: { confirm: "This comment will be permanently deleted." } %>
+      <% end %>
+    </p>
+  </small>
+</div>
