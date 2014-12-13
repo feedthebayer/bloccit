@@ -5,12 +5,15 @@
   <div class='col-md-8'>
     <p class='lead'><%= @topic.description %></p>
 
+
     <% @posts.each do |post| %>
       <div class='media'>
+        <%= render partial: 'votes/voter', locals: { post: post } %>
+        <%= image_tag(post.image.thumb.url,
+                      class: 'pull-left') if post.image? %>
         <div class='media-body'>
           <h4 class='media-heading'>
             <%= link_to post.markdown_title, [@topic, post] %>
-            <%= image_tag(post.image.thumb.url) if post.image? %>
           </h4>
 
           <small>
@@ -26,24 +29,18 @@
   </div>
 
   <div class="col-md-4">
-    <p>
       <% if policy(Post.new).create? %>
         <%= link_to "New Post", new_topic_post_path(@topic),
-          class: 'btn btn-success btn-lg' %>
+          class: 'btn btn-success' %>
       <% end %>
-    </p>
-    <p>
       <% if policy(Topic.new).edit? %>
         <%= link_to "Edit Topic", edit_topic_path,
           class: 'btn btn-info' %>
       <% end %>
-    </p>
-    <p>
       <% if policy(@topic).destroy? %>
         <%= link_to "Delete Topic", @topic, method: :delete,
           class: "btn btn-danger",
           data: { confirm: "This topic will be permanently deleted." } %>
       <% end %>
-    </p>
   </div>
 </div>
