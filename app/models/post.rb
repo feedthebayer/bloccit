@@ -29,9 +29,21 @@ class Post < ActiveRecord::Base
     votes.sum(:value)
   end
 
-  default_scope { order('created_at DESC') }
+  def update_rank
+    age_in_days = (created_at - Time.new(1970,1,1)) / (60 * 60 * 24)
+    new_rank = points + age_in_days
+
+    update_attribute(:rank, new_rank)
+  end
+
+  default_scope { order('rank DESC') }
+  after_create :create_vote
 
   private
+
+  def create_vote
+    user.votes.create(value: 1, post: self)
+  end
 
   def render_as_markdown(text)
     renderer = Redcarpet::Render::HTML.new

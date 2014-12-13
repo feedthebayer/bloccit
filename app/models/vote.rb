@@ -11,4 +11,12 @@ class Vote < ActiveRecord::Base
   def min?
     value == -1
   end
+
+  after_save :update_post
+
+  private
+
+  def update_post
+    post.update_rank
+  end
 end
