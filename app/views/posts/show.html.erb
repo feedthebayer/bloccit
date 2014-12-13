@@ -4,8 +4,10 @@
       <div style="margin-top: 10px">
         <%= render partial: 'votes/voter', locals: { post: @post } %>
       </div>
-      <h1>
+      <div class="pull-left" style="margin-top: 5px; margin-right: 10px">
         <%= image_tag(@post.image.thumb.url) if @post.image? %>
+      </div>
+      <h1>
         <%= @post.markdown_title %>
       </h1>
     </div>
