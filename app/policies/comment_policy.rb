@@ -1,9 +1,5 @@
 class CommentPolicy < ApplicationPolicy
-  def update?
-    create? && (record.user == user || user.admin?)
-  end
-
   def destroy?
-    update? || user.moderator?
+    user.present? && can_moderate?
   end
 end
