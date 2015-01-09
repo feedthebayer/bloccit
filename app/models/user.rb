@@ -5,8 +5,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
   has_many :comments, dependent: :destroy
   has_many :posts, dependent: :destroy
-  has_many :votes, dependent: :destroy
+  # has_many :votes, dependent: :destroy
   mount_uploader :avatar, AvatarUploader
+
+  def votes
+    Vote.where(user_id: self.id)
+  end
 
   def admin?
     role == 'admin'

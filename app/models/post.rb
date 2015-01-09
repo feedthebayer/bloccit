@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
   has_many :comments, dependent: :destroy
-  has_many :votes, dependent: :destroy
+  # has_many :votes, dependent: :destroy
   belongs_to :user
   belongs_to :topic
   validates :title, length: { minimum: 5 }, presence: true
@@ -8,6 +8,10 @@ class Post < ActiveRecord::Base
   validates :topic, presence: true
   validates :user, presence: true
   mount_uploader :image, ImageUploader
+
+  def votes
+    Vote.where(post_id: self.id)
+  end
 
   def markdown_title
     render_as_markdown title
