@@ -20,19 +20,19 @@ class VotesController < ApplicationController
 
   def update_vote!(new_value)
     if @vote
-      authorize @vote, :update?
+      # authorize @vote, :update?
 
-      if new_value == 1
-        new_value += @vote.value unless @vote.max?
-      elsif new_value == -1
-        new_value += @vote.value unless @vote.min?
-      end
+      # if new_value == 1
+      #   new_value += @vote.value unless @vote.max?
+      # elsif new_value == -1
+      #   new_value += @vote.value unless @vote.min?
+      # end
 
       @vote.update_attribute(:value, new_value)
     else
-      @vote = current_user.votes.build(value: new_value, post: @post)
+      @vote = current_user.votes.build(value: new_value, post_id: @post.id)
       authorize @vote, :create?
-      @vote.save
+      @vote.save!
     end
   end
 end

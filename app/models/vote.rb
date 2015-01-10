@@ -1,4 +1,4 @@
-class Vote < ActiveRecord::Base
+class Vote
   include Mongoid::Document
   field :value, type: Integer, default: 0
   field :user_id, type: Integer

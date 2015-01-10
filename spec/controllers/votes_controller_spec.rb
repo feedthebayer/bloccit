@@ -23,7 +23,7 @@ describe VotesController do
     it "adds a down-vote to the post" do
       expect {
         post(:down_vote, post_id: @post.id)
-      }.to change{ @post.down_votes }.by 1
+      }.to change{ @post.reload.down_votes }.by 1
     end
   end
 end
