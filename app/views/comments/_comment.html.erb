@@ -1,4 +1,5 @@
-<div style="margin-bottom: 30px">
+<%= content_tag :div, style: "margin-bottom: 30px",
+    id: "comment-#{comment.id}" do %>
   <%= image_tag comment.user.avatar.tiny.url, class: "pull-left" %>
   <h4><%= comment.user.name %></h4>
   <small>
@@ -11,4 +12,4 @@
       <% end %>
     </p>
   </small>
-</div>
+<% end %>

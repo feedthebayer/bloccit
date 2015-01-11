@@ -33,6 +33,7 @@
   </div>
 
   <div class="col-md-4">
+      <%= render partial: 'favorites/favorite', locals: { post: @post } %>
       <% if policy(@post).edit? %>
         <%= link_to "Edit Post", edit_topic_post_path(@topic, @post),
           class: 'btn btn-info' %>
