@@ -67,6 +67,12 @@
         <%= f.hidden_field :avatar_cache %>
       </div>
 
+      <div class="form-group">
+        <%= f.check_box :email_favorites %>
+        <%= f.label :email_favorites,
+            "I want to receive updates on favorited posts" %>
+      </div>
+
       <div class='form-group'>
         <%= f.submit "Update my information", class:'btn btn-success' %>
       </div>
