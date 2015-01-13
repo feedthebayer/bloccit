@@ -20,4 +20,24 @@ class User < ActiveRecord::Base
   def favorited(post)
     favorites.where(post_id: post.id).first
   end
+
+  def voted(post)
+    votes.where(post_id: post.id).first
+  end
+
+  def voted_up?(post)
+    if vote = voted(post)
+      vote.max?
+    else
+      nil
+    end
+  end
+
+  def voted_down?(post)
+    if vote = voted(post)
+      vote.min?
+    else
+      nil
+    end
+  end
 end
