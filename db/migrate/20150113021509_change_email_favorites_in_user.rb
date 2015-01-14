@@ -1,4 +1,4 @@
-require_relative '20150111155134_add_email_permission_to_users.rb'
+require_relative "20150111155134_add_email_permission_to_users.rb"
 class ChangeEmailFavoritesInUser < ActiveRecord::Migration
   def change
     revert AddEmailPermissionToUsers
