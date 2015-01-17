@@ -49,6 +49,9 @@ class Post < ActiveRecord::Base
   end
 
   default_scope { order('rank DESC') }
+  scope :publicly_viewable, -> { joins(:topic).where('topics.public' => true) }
+  scope :privately_viewable, -> { joins(:topic).where('topics.public' => false) }
+  scope :visible_to, -> (user) { user ? all : publicly_viewable }
 
   private
 
