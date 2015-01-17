@@ -1,15 +1,23 @@
 <div class="pull-left vote-arrows">
-  <% if policy(Vote.new).create? && !current_user.voted_up?(post) %>
-    <div><%= link_to " ", post_up_vote_path(post),
-      class: 'glyphicon glyphicon-chevron-up', method: :post %></div>
-  <% else %>
-    <div class='glyphicon glyphicon-chevron-up'></div>
-  <% end %>
-  <div><strong><%= post.points %></strong></div>
-  <% if policy(Vote.new).create? && !current_user.voted_down?(post) %>
-    <div><%= link_to " ", post_down_vote_path(post),
-      class: 'glyphicon glyphicon-chevron-down', method: :post %></div>
-  <% else %>
-    <div class='glyphicon glyphicon-chevron-down'></div>
-  <% end %>
+  <div>
+    <% if policy(Vote.new).create? && !current_user.voted_up?(post) %>
+      <%= link_to post_up_vote_path(post), method: :post do %>
+        <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+      <% end %>
+    <% else %>
+      <span class='glyphicon glyphicon-chevron-up' aria-hidden="true"></span>
+    <% end %>
+  </div>
+  <div>
+    <strong><%= post.points %></strong>
+  </div>
+  <div>
+    <% if policy(Vote.new).create? && !current_user.voted_down?(post) %>
+      <%= link_to post_down_vote_path(post), method: :post do %>
+        <span class='glyphicon glyphicon-chevron-down' aria-hidden="true"></span>
+      <% end %>
+    <% else %>
+      <span class='glyphicon glyphicon-chevron-down' aria-hidden="true"></span>
+    <% end %>
+  </div>
 </div>

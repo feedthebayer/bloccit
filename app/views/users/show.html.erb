@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-md-12 user-header">
+    <div class="media">
+      <%= image_tag @user.avatar.profile.url, class: "pull-left" %>
+      <div class="media-body">
+        <h1 class="media-heading"><%= @user.name %></h1>
+        <small>
+          <%= pluralize(@user.posts.count, 'post') %>,
+          <%= pluralize(@user.comments.count, 'comment') %>
+        </small>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="tabbable tabs-left">
+      <ul class="nav nav-tabs" style="margin-bottom: 1em">
+        <li class="active"><a href="#posts" data-toggle="tab">Posts</a></li>
+        <li><a href="#comments" data-toggle="tab">Comments</a></li>
+      </ul>
+      <div class="tab-content">
+        <div id="posts" class="tab-pane active">
+          <%= render @posts %>
+        </div>
+        <div id="comments" class="tab-pane">
+          <%= render @comments %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

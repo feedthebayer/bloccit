@@ -1,3 +1,4 @@
+@import "bootstrap-sprockets";
 @import "bootstrap";
 
 .user-info {
@@ -19,4 +20,8 @@
 
 .points {
   padding-right: 15px;
+}
+
+.user-header {
+  margin: 20px 0;
 }
