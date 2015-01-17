@@ -1,12 +1,12 @@
 <div class="pull-left vote-arrows">
-  <% if policy(Vote.new).create? %>
+  <% if policy(Vote.new).create? && !current_user.voted_up?(post) %>
     <div><%= link_to " ", post_up_vote_path(post),
       class: 'glyphicon glyphicon-chevron-up', method: :post %></div>
   <% else %>
     <div class='glyphicon glyphicon-chevron-up'></div>
   <% end %>
   <div><strong><%= post.points %></strong></div>
-  <% if policy(Vote.new).create? %>
+  <% if policy(Vote.new).create? && !current_user.voted_down?(post) %>
     <div><%= link_to " ", post_down_vote_path(post),
       class: 'glyphicon glyphicon-chevron-down', method: :post %></div>
   <% else %>
