@@ -11,7 +11,6 @@ class CommentsController < ApplicationController
       redirect_to [@topic, @post]
     else
       flash[:error] = "There was a problem with your comment!"
-      # render :new
       redirect_to [@topic, @post]
     end
   end

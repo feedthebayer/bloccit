@@ -5,19 +5,23 @@ class Comment < ActiveRecord::Base
   validates :body, presence: true, length: { minimum: 5 }
   validates :user, presence: true
 
-  after_create :send_favorite_emails
+  after_create :email_users_who_favorited_this_post
 
   private
 
-  def send_favorite_emails
-    post.favorites.each do |favorite|
-      if should_receive_update_for?(favorite)
+  def email_users_who_favorited_this_post
+    self.post.favorites.each do |favorite|
+      if should_email_user_for?(favorite)
         FavoriteMailer(favorite.user, post, self).deliver
       end
     end
   end
 
-  def should_receive_update_for?(favorite)
-    user_id != favorite.user_id && favorite.user.email_favorites?
+  def should_email_user_for?(favorite)
+    favorite.user.email_favorites? && !user_who_created_this_comment?(favorite)
+  end
+
+  def user_who_created_this_comment?(favorite)
+    user_id == favorite.user_id
   end
 end
