@@ -12,7 +12,7 @@ class Comment < ActiveRecord::Base
   def email_users_who_favorited_this_post
     self.post.favorites.each do |favorite|
       if should_email_user_for?(favorite)
-        FavoriteMailer(favorite.user, post, self).deliver
+        FavoriteMailer.new_comment(favorite.user, post, self).deliver
       end
     end
   end
