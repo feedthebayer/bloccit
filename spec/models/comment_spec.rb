@@ -8,7 +8,7 @@ describe Comment do
     before do
       @post = associated_post
       @user = authenticated_user
-      @comment = Comment.new(body: 'My comment', post: @post, user_id: 10000)
+      @comment = Comment.new(body: 'My comment', post: @post, user: @user)
     end
 
     context "with user's permission" do
@@ -20,13 +20,13 @@ describe Comment do
           .with(@user, @post, @comment)
           .and_return(double(deliver: true))
 
-        @comment.save
+        @comment.save!
       end
 
       it "does not send emails to users who haven't" do
         expect(FavoriteMailer).not_to receive(:new_comment)
 
-        @comment.save
+        @comment.save!
       end
     end
 
@@ -39,7 +39,7 @@ describe Comment do
 
         expect(FavoriteMailer).not_to receive(:new_comment)
 
-        @comment.save
+        @comment.save!
       end
     end
   end
