@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :update]
 
   resources :topics do
-    resources :posts, except: [:index]
+    resources :posts, except: [:index], controller: 'topics/posts'
   end
 
   resources :posts, only: [] do
