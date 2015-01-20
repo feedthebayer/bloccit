@@ -20,4 +20,16 @@ module TestFactories
     user.save
     user
   end
+
+  def comment_without_email(options={})
+    comment_options = {
+      user: authenticated_user,
+      body: "A comment body",
+      post_id: nil
+    }.merge(options)
+    comment = Comment.new(comment_options)
+    allow(comment).to receive(:email_users_who_favorited_this_post)
+    comment.save
+    comment
+  end
 end
