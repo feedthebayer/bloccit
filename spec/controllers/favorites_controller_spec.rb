@@ -1,13 +1,12 @@
 require 'rails_helper'
 
 describe FavoritesController do
-  include TestFactories
   include Devise::TestHelpers
 
   before do
     request.env["HTTP_REFERER"] = '/'
-    @post = associated_post
-    @user = authenticated_user
+    @post = create(:post)
+    @user = create(:user)
     sign_in @user
   end
 
