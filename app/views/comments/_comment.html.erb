@@ -8,7 +8,8 @@
       <%= time_ago_in_words comment.created_at %> ago
       <% if policy(comment).destroy? %>
         | <%= link_to "Delete", [comment.post, comment], method: :delete,
-          data: { confirm: "This comment will be permanently deleted." } %>
+          data: { confirm: "This comment will be permanently deleted." },
+          remote: true %>
       <% end %>
     </p>
   </small>
