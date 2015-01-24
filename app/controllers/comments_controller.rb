@@ -3,23 +3,24 @@ class CommentsController < ApplicationController
 
   def create
     @post  = Post.find(params[:post_id])
-    @topic = @post.topic
     @comment = current_user.comments.build(comment_params)
     @comment.post = @post
+    @new_comment = Comment.new
 
     authorize @comment
     if @comment.save
-      flash[:notice] = "Your comment was saved"
-      redirect_to [@topic, @post]
+      flash.now[:notice] = "Your comment was saved"
     else
-      flash[:error] = "There was a problem with your comment!"
-      redirect_to [@topic, @post]
+      flash.now[:error] = "There was a problem with your comment!"
+    end
+
+    respond_with(@comment) do |format|
+      format.html { redirect_to [@post.topic, @post] }
     end
   end
 
   def destroy
     @post  = Post.find(params[:post_id])
-    @topic = @post.topic
     @comment = @post.comments.find(params[:id])
 
     authorize @comment

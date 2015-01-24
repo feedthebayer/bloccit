@@ -1,0 +1,14 @@
+<% if @comment.valid? %>
+  $('.js-comments')
+    .append("<div class='alert alert-success'><%= flash[:notice] %></div>");
+  $('.js-comments').append("<%= escape_javascript(render(@comment)) %>");
+  $('.new-comment')
+    .html("<%= escape_javascript(
+      render partial: 'comments/form', locals: { post: @post, comment: @new_comment }) %>");
+<% else %>
+  $('.js-comments')
+    .append("<div class='alert alert-danger'><%= flash[:error] %></div>");
+  $('.new-comment')
+    .html("<%= escape_javascript(
+      render partial: 'comments/form', locals: { post: @post }) %>");
+<% end %>

@@ -48,11 +48,14 @@
 
 <div class="row">
   <div class="col-md-5">
-    <%= render partial: 'comments/comment', collection: @comments %>
+    <div class="js-comments">
+      <%= render partial: 'comments/comment', collection: @comments %>
+    </div>
     <br/>
-    <% if user_signed_in? %>
-      <%= render partial: 'comments/form',
-        locals: { topic: @topic, post: @post } %>
-    <% end %>
+    <div class="new-comment">
+      <% if user_signed_in? %>
+        <%= render partial: 'comments/form', locals: { post: @post } %>
+      <% end %>
+    </div>
   </div>
 </div>
