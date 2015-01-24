@@ -24,9 +24,9 @@ class CommentsController < ApplicationController
 
     authorize @comment
     if @comment.destroy
-      flash[:notice] = "The comment was deleted."
+      flash.now[:notice] = "The comment was deleted."
     else
-      flash[:error] = "Error deleting the comment."
+      flash.now[:error] = "Error deleting the comment."
     end
 
     respond_with(@comment) do |format|
